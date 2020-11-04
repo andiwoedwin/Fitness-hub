@@ -6,10 +6,10 @@ class Programme(models.Model):
     release = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField(null=True,blank=True)
     banner = models.ImageField(upload_to='images/',)
-    service = models
+    service_id = models.IntegerField()
 
     def __str__(self):
-        return f'{self.name}'
+        return self.title
 
     def create_programme(self):
         self.save()
@@ -26,7 +26,21 @@ class Programme(models.Model):
 
 class Service(models.Model):
     name = models.CharField(max_length=120)
-    Equipments = models.ManyToManyField(Equipment)
+    Equipments = models.ManyToManyField("Equipment")
+
+    def __str__(self):
+        return f'{self.name} Service'
+    
+    def create_Service(self):
+        self.save()
+
+    def delete_Service(self):
+        self.delete()
+
+    @classmethod
+    def find_service(cls, service_id):
+        return cls.objects.filter(id=service_id)
+
 
 
 

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'gym.apps.GymConfig',
     'django.contrib.admin',
     'django.contrib.auth',

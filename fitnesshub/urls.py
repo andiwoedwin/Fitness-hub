@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url,include
+from django.urls import path
+from rest_framework.urlpatterns import format_suffix_patterns
+from gym import views
+
 urlpatterns = [
-    url('admin/', admin.site.urls),
-    url(r'^gym/',include('gym.urls'))
+    path('admin/', admin.site.urls),
+    path('Programme/',views.ProgrammeList.as_view()),
 ]
